@@ -1,0 +1,26 @@
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  background-color: beige;
+  height: 50%;
+  padding: 20px;
+  width: 100%;
+  overflow-y: scroll; }
+
+.message {
+  background-color: lightblue;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 20px;
+  margin: 5px; }
+
+.message-owner {
+  align-self: flex-end; }
+
+.message-companion {
+  align-self: flex-start; }
+
+.message-sender {
+  color: gray;
+  font-size: 14px; }
+
