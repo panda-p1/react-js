@@ -13,7 +13,7 @@ export class Messenger extends Component {
         this.setState({
             messages: this.state.messages.concat([message])
         })
-        this.toScroll()
+
 
     };
 
@@ -32,7 +32,8 @@ export class Messenger extends Component {
                 this.toScroll()
             }, 1000)
         }
-        
+        this.toScroll()
+
     };
     
     render() {
