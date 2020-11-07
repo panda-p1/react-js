@@ -1,18 +1,49 @@
+.root {
+  height: 97vh;
+  width: 100%; }
+
+.Layout {
+  height: 100%;
+  width: 70%; }
+
+.main-content {
+  height: 50%;
+  display: flex;
+  justify-content: space-between; }
+
+.header {
+  padding: 30px;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: lightblue; }
+
+.messenger {
+  width: 80%;
+  display: flex;
+  flex-direction: column; }
+
+.message-form {
+  align-self: flex-end; }
+
 .messages-list {
   display: flex;
   flex-direction: column;
   background-color: beige;
-  height: 50%;
-  padding: 20px;
-  width: 100%;
-  overflow-y: scroll; }
+  height: 100%;
+  border: 1px solid black;
+  padding: 25px;
+  max-width: 100%;
+  overflow-y: auto;
+  box-sizing: border-box; }
 
 .message {
   background-color: lightblue;
   padding: 5px 15px;
   border-radius: 20px;
   font-size: 20px;
-  margin: 5px; }
+  margin: 5px;
+  max-width: 40%;
+  word-wrap: break-word; }
 
 .message-owner {
   align-self: flex-end; }
@@ -23,4 +54,6 @@
 .message-sender {
   color: gray;
   font-size: 14px; }
+
+/*# sourceMappingURL=Message.css.map */
 

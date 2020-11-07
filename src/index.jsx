@@ -1,16 +1,26 @@
+import './index.css'
+
 import React from 'react';
 import ReactDom from 'react-dom';
+import { BrowserRouter, Route , Routes} from "react-router-dom";
+import { Switch }  from 'react-router-dom'
 
-// import { Messenger } from 'components/Messenger'
-import {Layout} from 'components/Layout'
+import { Layout } from 'components/Layout'
+import {routes}  from "./routes";
+import {ChatList} from "components/ChatList";
+import {AboutPage} from "components/pages/AboutPage";
 
-import './index.css'
-// const messages = ['hi brother', 'what about you?', 'how are you?'];
-// const Message = (props) => <h1>{props.text}</h1>;
-// const MessageList = (props) => {
-//     return props.messages.map(message => <Message text={message}/>) // dumb component
-// };
+
 ReactDom.render(
-    <Layout/>,
+    <BrowserRouter>
+        <Switch>
+                    <Route exact path='/' component={Layout}/>
+                    {routes.map((route, idx) => {
+                            return <Route key={idx} path={route.path} component={route.component}/>
+                    })}
+                    <Route exact path='/profile' component={Layout} />
+
+        </Switch>
+    </BrowserRouter>,
     document.getElementById('root')
 );
