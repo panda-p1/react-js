@@ -12,11 +12,20 @@ export class MessagesList extends Component {
             PropTypes.shape(messageType)
         ),
     }
+    toScroll = () => {
+        let block = this.el;
+        block ? block.scrollTop = block.scrollHeight : null;
+    }
+    componentDidUpdate() {
+        this.toScroll();
+    }
+
+    getRef = (node) => this.el = node;
 
     render() {
         const items = this.props.items;
         return (
-            <div className="messages-list">
+            <div className="messages-list" ref={this.getRef}>
                     {items.map((item,idx) => <Message key={idx} {...item} />)}
             </div>
         )
