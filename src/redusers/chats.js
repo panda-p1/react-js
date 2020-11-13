@@ -37,11 +37,26 @@ export const chatsReducer = handleActions({
         )));
     },
     [send]: (state, action) => {
+        // console.log(action.payload)
         const {chatId, ...message} = action.payload;
+        // console.log(chatId,message)
         return state.mergeIn(['entries', chatId, 'messages'], message)
     },
     [add]: (state, action) => {
-
+        let { value, chatSize } = action.payload;
+        return state.mergeIn(['entries'],fromJS(
+            {
+                [chatSize]: {
+                    id: {chatSize},
+                    messages: [
+                        {
+                            text: `this is chat №${chatSize}`, author: 'bot'
+                        }
+                    ],
+                    name: `${value}`
+                }
+            }
+        ))
     }
 }, initialState)
 

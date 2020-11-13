@@ -5,7 +5,8 @@ import React, { Component } from 'react'
 import {Header} from 'components/Header'
 import {ChatList} from 'components/ChatList'
 import {MessengerRedux} from 'containers/MessengerContainer'
-import {ChatCreate} from "components/ChatCreate";
+import {ChatCreateRedux} from "containers/ChatCreateContainer";
+import {ChatListRedux} from "containers/ChatListContainer";
 
 // import { AlignItemsList } from 'components/ChatList/chatListFunc'
 
@@ -16,10 +17,10 @@ export class Layout extends Component {
             <div className="Layout">
                 <Header/>
                 <div className="main-content">
-                    <ChatList/>
+                    <ChatListRedux/>
                     <MessengerRedux props={this.props}/>
                 </div>
-                <ChatCreate/>
+                <ChatCreateRedux/>
             </div>
         )
     }

@@ -38,7 +38,6 @@ function mapStateToProps(state, ownProps) {
         // console.log(5555)
         // console.log(chats.get(match.params.id,'messages'))
         messages = chats.get(match.params.id).toJS().messages
-        console.log(messages)
     }
 
     return {
