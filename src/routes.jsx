@@ -15,14 +15,14 @@ export const routes = [
         component: AboutPage
     },
     {
-        path: '/chat/:id',
-        exact: true,
+        path: '/chats/:id',
+        // exact: true,
         // component: MessengerRedux
         component: Layout,
     },
     {
         path: '/create/chat',
-        exact: true,
+        // exact: true,
         component: Layout
     }
 ]

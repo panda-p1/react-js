@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 import { Map, fromJS } from 'immutable';
 
-import { load, send, add } from 'actions/chats'
+import { load, send, add, blink, deleteMessage, deleteChat } from 'actions/chats'
 
 const initialState = new Map({
     loading: false,
@@ -17,47 +17,65 @@ export const chatsReducer = handleActions({
                     messages: [{
                         text: "this is chat №1", author: 'bot'
                     }],
-                    name: 'Chat 1'
+                    name: 'Chat 1',
+                    unreadMessage: false,
                 },
                 '2': {
                     id: 2,
                     messages: [{
                         text: "this is chat №2", author: 'bot'
                     },],
-                    name: 'Chat 2'
+                    name: 'Chat 2',
+                    unreadMessage: false,
                 },
                 '3': {
                     id: 3,
                     messages: [{
                         text: "this is chat №3", author: 'bot'
                     },],
-                    name: 'Chat 3'
+                    name: 'Chat 3',
+                    unreadMessage: false,
                 }
             }
         )));
     },
     [send]: (state, action) => {
-        // console.log(action.payload)
         const {chatId, ...message} = action.payload;
-        // console.log(chatId,message)
         return state.mergeIn(['entries', chatId, 'messages'], message)
     },
     [add]: (state, action) => {
-        let { value, chatSize } = action.payload;
-        return state.mergeIn(['entries'],fromJS(
-            {
-                [chatSize]: {
-                    id: {chatSize},
-                    messages: [
-                        {
-                            text: `this is chat №${chatSize}`, author: 'bot'
-                        }
-                    ],
-                    name: `${value}`
-                }
-            }
-        ))
+        const { value, idx } = action.payload;
+        console.log(action.payload)
+        const newState = state.toJS();
+        // console.log(newState.entries[chatSize])
+        newState.entries[idx] = {
+                id: idx,
+                messages: [
+                    {
+                        text: `this is chat №${idx}`, author: 'bot'
+                    }
+                ],
+                name: `${value}`,
+                unreadMessage: false,
+        }
+        console.log(newState)
+        return fromJS(newState)
+    },
+    [blink]: (state, action) => {
+        const chatId = action.payload[0]
+        const boolean = action.payload[1]
+        return state.setIn(['entries', `${chatId}`, `unreadMessage`], boolean)
+    },
+    [deleteMessage]:(state, action) => {
+        const messageId = action.payload[0];
+        const chatId = action.payload[1];
+        return state.setIn(['entries', chatId, `messages`], state.getIn(['entries', chatId, `messages`]).delete(messageId))
+    },
+    [deleteChat]: (state, action) => {
+        const chatId = action.payload;
+        const newState = state.toJS()
+        delete newState.entries[chatId]
+        return fromJS(newState);
     }
 }, initialState)
 
-// export default chatReducer;

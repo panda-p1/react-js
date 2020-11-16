@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 export class SimpleCard extends Component {
     getRef = (node) => this.el = node;
     render() {
-        const {getActive} = this.props
+        const { getActive } = this.props
         const { getName } = this.props
         return (
             <Card className={`card`}>

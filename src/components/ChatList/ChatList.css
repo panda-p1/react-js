@@ -1,0 +1,8 @@
+.blink-chat {
+    background-color: beige;
+}
+.delete-icon {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}

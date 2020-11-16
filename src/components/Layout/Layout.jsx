@@ -13,11 +13,12 @@ import {ChatListRedux} from "containers/ChatListContainer";
 export class Layout extends Component {
 
     render() {
+      console.log(this.props)
         return(
             <div className="Layout">
                 <Header/>
                 <div className="main-content">
-                    <ChatListRedux/>
+                    <ChatListRedux props={this.props}/>
                     <MessengerRedux props={this.props}/>
                 </div>
                 <ChatCreateRedux/>

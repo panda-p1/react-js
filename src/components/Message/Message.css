@@ -1,6 +1,7 @@
 .message {
   background-color: lightblue;
-  padding: 5px 15px;
+  position: relative;
+  padding: 5px 23px;
   border-radius: 20px;
   font-size: 20px;
   margin: 5px;
@@ -16,6 +17,11 @@
 .message-sender {
   color: gray;
   font-size: 14px;
+}
+
+.delete-icon {
+  position: absolute;
+  right: 5px;
 }
 
 /*# sourceMappingURL=Message.css.map */
