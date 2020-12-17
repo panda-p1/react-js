@@ -1,9 +1,7 @@
 import { Layout } from "components/Layout";
 import { AboutPage } from "components/pages/AboutPage";
-import { ChatList } from "components/ChatList";
-import {Messenger} from "components/Messenger";
-import chatListFunc from "components/ChatList/chatListFunc";
-// import { AlignItemsList } from "components/ChatList/chatListFunc"
+import {ChatCreate} from "components/ChatCreate";
+import { MessengerRedux } from "containers/MessengerContainer";
 
 export const routes = [
     // {
@@ -17,8 +15,14 @@ export const routes = [
         component: AboutPage
     },
     {
-        path: '/chat/:id',
-        exact: true,
+        path: '/chats/:id',
+        // exact: true,
+        // component: MessengerRedux
+        component: Layout,
+    },
+    {
+        path: '/create/chat',
+        // exact: true,
         component: Layout
     }
 ]

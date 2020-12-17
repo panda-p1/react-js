@@ -15,26 +15,25 @@ export class MessageForm extends Component {
     static propTypes = {
         onSend: propTypes.func,
     };
-    handlerMessageBtn = () => {
+    handleMessageBtn = () => {
         const onSend = this.props.onSend;
         if(typeof (onSend) === 'function') {
             onSend(this.state);
-            // document.querySelector('.test').value = '';
             this.setState({
                 text: ''
             })
         }
 
     };
-    handlerInput = (event) => {
+    handleInput = (event) => {
         const fieldName = event.target.name;
         this.setState({
             [fieldName]: event.target.value,
         });
     };
-    handlerEnterDown = (event) => {
+    handleEnterDown = (event) => {
         if (event.ctrlKey && event.keyCode === 13) {
-            this.handlerMessageBtn()
+            this.handleMessageBtn()
         }
     }
     
@@ -43,9 +42,9 @@ export class MessageForm extends Component {
 
         return(
             <div className="message-form">
-                <TextField label="author" name="author" onChange={this.handlerInput} type="text" value={author}/><br/>
-                <TextField label="message" name="text" onKeyDown={this.handlerEnterDown} onChange={this.handlerInput} type="text" value={text}/>
-                <Button variant="contained" color="primary" onClick={this.handlerMessageBtn}>SEND!</Button>
+                <TextField label="author" name="author" onChange={this.handleInput} type="text" value={author}/><br/>
+                <TextField label="message" name="text" onKeyDown={this.handleEnterDown} onChange={this.handleInput} type="text" value={text}/>
+                <Button variant="contained" color="primary" onClick={this.handleMessageBtn}>SEND!</Button>
             </div>
         )
     }
